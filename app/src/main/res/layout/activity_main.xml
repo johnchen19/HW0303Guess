@@ -49,13 +49,4 @@
         app:layout_constraintStart_toStartOf="@+id/edNumber"
         app:layout_constraintTop_toBottomOf="@+id/edNumber" />
 
-    <Button
-        android:id="@+id/b_repick"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:onClick="repick"
-        android:text="play again"
-        app:layout_constraintStart_toStartOf="@+id/bGuess"
-        app:layout_constraintTop_toBottomOf="@+id/bGuess" />
 </androidx.constraintlayout.widget.ConstraintLayout>

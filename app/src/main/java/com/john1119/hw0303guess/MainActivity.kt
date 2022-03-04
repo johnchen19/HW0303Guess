@@ -1,5 +1,6 @@
 package com.john1119.hw0303guess
 
+import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -46,18 +47,28 @@ class MainActivity : AppCompatActivity() {
 //                    .show()
             } else {
                 binding.tvRange.setText("The secret number is $secret")
-                alert("You got it,the secret number is $number")
-//                AlertDialog.Builder(this)
-//                    .setTitle("result")
-//                    .setMessage("You got it,the secret number is $number")
-//                    .setPositiveButton("OK", null)
-//                    .show()
+//                alert("You got it,the secret number is $number")
+                AlertDialog.Builder(this)
+                    .setTitle("result")
+                    .setMessage("You got it,the secret number is $number")
+                    .setPositiveButton("Play Again"){Dialog,which ->
+                        repick()
+                    }
+                    .show()
             }
         }
         binding.edNumber.setText("")
 
     }
-    fun repick(view: View){
+//    fun repick(view: View){
+//        min=1
+//        max=100
+//        binding.tvRange.setText("$min to $max")
+//        pick= PickSecret(min,max)
+//        secret=pick.secret
+//        println(secret)
+//    }
+    fun repick(){
         min=1
         max=100
         binding.tvRange.setText("$min to $max")
