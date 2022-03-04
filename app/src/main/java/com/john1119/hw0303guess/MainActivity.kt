@@ -22,30 +22,40 @@ class MainActivity : AppCompatActivity() {
     fun guess(view:View) {
         println(secret)
         var number = binding.edNumber.text.toString().toInt()
-        if (secret > number) {
-            min = number
-            binding.tvRange.setText("$min to $max")
-            AlertDialog.Builder(this)
-                .setTitle("result")
-                .setMessage("Bigger,$min to $max")
-                .setPositiveButton("OK", null)
-                .show()
-        } else if (secret < number) {
-            max = number
-            binding.tvRange.setText("$min to $max")
-            AlertDialog.Builder(this)
-                .setTitle("result")
-                .setMessage("Smaller,$min to $max")
-                .setPositiveButton("OK", null)
-                .show()
-        } else {
-            binding.tvRange.setText("The secret number is $secret")
-            AlertDialog.Builder(this)
-                .setTitle("result")
-                .setMessage("You got it,the secret number is $number")
-                .setPositiveButton("Play Again", null)
-                .show()
+        if(number>max || number<min) {
+            alert("the range is $min to $max")
         }
+        else{
+            if (secret > number) {
+                min = number
+                binding.tvRange.setText("$min to $max")
+                alert("Bigger,$min to $max")
+//                AlertDialog.Builder(this)
+//                    .setTitle("result")
+//                    .setMessage("Bigger,$min to $max")
+//                    .setPositiveButton("OK", null)
+//                    .show()
+            } else if (secret < number) {
+                max = number
+                binding.tvRange.setText("$min to $max")
+                alert("Smaller,$min to $max")
+//                AlertDialog.Builder(this)
+//                    .setTitle("result")
+//                    .setMessage("Smaller,$min to $max")
+//                    .setPositiveButton("OK", null)
+//                    .show()
+            } else {
+                binding.tvRange.setText("The secret number is $secret")
+                alert("You got it,the secret number is $number")
+//                AlertDialog.Builder(this)
+//                    .setTitle("result")
+//                    .setMessage("You got it,the secret number is $number")
+//                    .setPositiveButton("OK", null)
+//                    .show()
+            }
+        }
+        binding.edNumber.setText("")
+
     }
     fun repick(view: View){
         min=1
@@ -55,5 +65,11 @@ class MainActivity : AppCompatActivity() {
         secret=pick.secret
         println(secret)
     }
-
+    fun alert(message:String) {
+        AlertDialog.Builder(this)
+            .setTitle("result")
+            .setMessage(message)
+            .setPositiveButton("OK", null)
+            .show()
+    }
 }
